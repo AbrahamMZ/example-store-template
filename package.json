@@ -16,9 +16,13 @@
         "@mdi/font": "^5.9.55",
         "laravel-mix": "^6.0.16",
         "lodash": "^4.17.21",
+        "path": "^0.12.7",
+        "portal-vue": "^2.1.7",
         "postcss": "8.1",
         "vue": "^2.6.12",
+        "vue-image-magnifier": "^0.2.1",
         "vue-loader": "15.9.5",
+        "vue-meta": "^2.4.0",
         "vue-template-compiler": "^2.6.12",
         "vuetify": "^2.4.9"
     }

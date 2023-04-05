@@ -58,4 +58,23 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function scopeSortBy($query, array $sort = [])
+    {
+        $sortBy = $sort['sortBy'][0] ?? 'key';
+        $sortDesc = $sort['sortDesc'][0] ?? false;
+        $query->orderBy($sortBy, $sortDesc ? 'desc' : 'asc');
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('key', 'like',  $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhere('phones', 'like', '%' . $search . '%');
+            });
+        });
+    }
 }
